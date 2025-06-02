@@ -1,10 +1,11 @@
-project(SDL_GUI)
+cmake_minimum_required(VERSION 3.28)
 
-# set(CMAKE_CXX_STANDARD 17)
-set(SDL2_INCLUDE_DIR C:/SDL2/include)
-set(SDL2_LIB_DIR C:/SDL2/lib/x64)
-include_directories(${SDL2_INCLUDE_DIR})
-link_directories(${SDL2_LIB_DIR})
+project(SDL_GUI)
+set(CMAKE_CXX_STANDARD 17)
+#set(SDL2_INCLUDE_DIR C:/SDL2/include)
+#set(SDL2_LIB_DIR C:/SDL2/lib/x64)
+#include_directories(${SDL2_INCLUDE_DIR})
+#link_directories(${SDL2_LIB_DIR})
 
 link_libraries(SDL2 SDL2_ttf SDL2_image)
 include_directories(include Radiobutton Textbox Theme Dropdown Slider Checkbox Button Window Widget Parent Utils Text Frame Label Entry EventHandler)
