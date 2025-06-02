@@ -153,8 +153,8 @@ void Window::draw_text(int x, int y, const char* text, SDL_Color color)
 	SDL_Surface* surface = TTF_RenderUTF8_Blended(font, text, color);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_Rect src = {0, 0, surface->w, surface->h};
-	float w = x;
-	float h = y;
+	int w = x;
+	int h = y;
 	SDL_Rect dst = {w, h, src.w, src.h};
 	SDL_RenderCopy(renderer, texture, &src, &dst);
 	SDL_DestroyTexture(texture);

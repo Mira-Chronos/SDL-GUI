@@ -33,7 +33,7 @@ void Textbox::update_and_render(float dt)
 void Textbox::calc_visible_text()
 {
 	visible_text.lines.clear();
-	for (int l = scroll_down; l < contents.get_line_count() && visible_text.get_line_count() < line_count; l++) {
+	for (unsigned int l = scroll_down; l < contents.get_line_count() && visible_text.get_line_count() < line_count; l++) {
 		// go through each line visible after the scroll down, and add characters visible after scroll right
 		visible_text.lines.push_back("");
 		for (int i = scroll_right; i < contents.lines[l].length() && visible_text.lines.back().size() < character_count; i++) {

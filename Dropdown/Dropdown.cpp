@@ -3,7 +3,7 @@
 #include "Dropdown.hpp"
 
 Dropdown::Dropdown(std::shared_ptr<Parent> parent, std::string _placeholder, std::vector<std::string> _options)
-	:Widget(parent), placeholder(_placeholder), options(_options)
+	:Widget(parent), options(_options), placeholder(_placeholder)
 {
 	w = placeholder.length();
 	if (w == 0)

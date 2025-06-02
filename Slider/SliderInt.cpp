@@ -57,7 +57,7 @@ void SliderInt::update_and_render(float dt)
 	}
 	if (show_lines) {
 		for (int i = x; i <= x + w; i += gap) {
-			window->draw_line(i, y + 5, i, y + h - 5, { 55, 55, 55 });
+			window->draw_line(i, y + 5, i, y + h - 5, { 55, 55, 55, 255});
 		}
 	}
 	Slider::update_and_render(dt);

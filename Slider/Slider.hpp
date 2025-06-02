@@ -13,7 +13,7 @@ public:
 	SDL_Color circle_color = Theme::SLIDER_CIRCLE;
 	SDL_Color foreground = Theme::SLIDER_FOREGROUND;
 	SDL_Color background = Theme::SLIDER_BACKGROUND;
-	SDL_Color circle_border = { 255,255,255};
+	SDL_Color circle_border = { 255,255,255, 255};
 protected:
 	virtual void update_and_render(float dt);
 	int position_x = 0;

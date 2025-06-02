@@ -31,7 +31,7 @@ void Checkbox::update_and_render(float dt)
 {
 	Widget::update_and_render(dt);
 	window->draw_rect(x + padding_x + 1, y + h / 2 - 6 + 1, 10, 10, box_bg, true); // background
-	window->draw_rect(x + padding_x, y + h / 2 - 6, 12, 12, { 255,255,255 }); // border
+	window->draw_rect(x + padding_x, y + h / 2 - 6, 12, 12, { 255,255,255, 255 }); // border
 	text.render(x + spacing + padding_x, y + h / 2 - window->get_font_height() / 2, foreground); // text
 	if (checked) {
 		// draw the tick

@@ -13,7 +13,7 @@ Slider::Slider(std::shared_ptr<Parent> parent)
 
 void Slider::render_thick()
 {
-	window->draw_rect(x, y, w, h, {55, 55, 55});
+	window->draw_rect(x, y, w, h, {55, 55, 55, 255});
 	window->draw_rect(x+1, y+1, position_x-2, y+h-2, foreground, true);
 	window->draw_rect(x+position_x+1, y+1, w-position_x-2, y+h-2, background, true);
 }
@@ -23,7 +23,7 @@ void Slider::render_thin()
 	window->draw_line(x, y + h / 2, x+position_x, y + h / 2, foreground); // progress line
 	window->draw_line(x+position_x, y + h / 2, x + w, y + h / 2, background);
 
-	window->draw_line(x+position_x, y+5, x+position_x, y+h-5, {255, 255, 255});
+	window->draw_line(x+position_x, y+5, x+position_x, y+h-5, {255, 255, 255, 255});
 	/*
 	old look, draws a circle instead of a line
 	window->draw_circle_fill(position_x + x, y + h / 2, 5, circle_border); // circle border
