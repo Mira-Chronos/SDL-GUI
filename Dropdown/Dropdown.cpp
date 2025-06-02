@@ -9,7 +9,7 @@ Dropdown::Dropdown(std::shared_ptr<Parent> parent, std::string _placeholder, std
 	if (w == 0)
 		w = window->get_font_width();
 	for (std::string &str : options) {
-		if (str.length() > w)
+		if (str.length() > static_cast<unsigned int>(w))
 			w = str.length();
 	}
 	w *= window->get_font_width();
@@ -46,11 +46,11 @@ void Dropdown::update_and_render(float dt)
 		window->top_level.push_back([this]() {
 			window->draw_rect(x, y, w, dropdown_height, border);
 			window->draw_rect(x+1, y+1, w-2, dropdown_height-2, background, true);
-			window->draw_line(x+w-triangle_size-triangle_edge_gap, y+h*0.75f, x+w-triangle_size/2-triangle_edge_gap, y+h/2, {255, 255, 255});
-			window->draw_line(x+w-triangle_size/2-triangle_edge_gap, y+h/2, x+w-triangle_edge_gap, y+h*0.75f, {255, 255, 255});
+			window->draw_line(x+w-triangle_size-triangle_edge_gap, y+h*0.75f, x+w-triangle_size/2-triangle_edge_gap, y+h/2, {255, 255, 255, 255});
+			window->draw_line(x+w-triangle_size/2-triangle_edge_gap, y+h/2, x+w-triangle_edge_gap, y+h*0.75f, {255, 255, 255, 255});
 
 			int mouse_y_rel = EventHandler::get_mouse_y() - y; // relative mouse x
-			int item = mouse_y_rel / window->get_font_height();
+			unsigned int item = mouse_y_rel / window->get_font_height();
 			if (item > 0 && item <= options.size()) // draw a coloured rect behind the hovered item
 				window->draw_rect(x, y+item*window->get_font_height(), w, window->get_font_height(), hover_background, true);
 
@@ -65,8 +65,8 @@ void Dropdown::update_and_render(float dt)
 	else {
 		window->draw_rect(x, y, w, h, border);
 		window->draw_rect(x+1, y+1, w-2, h-2, background, true);
-		window->draw_line(x+w-triangle_size-triangle_edge_gap, y+h/2, x+w-triangle_size/2-triangle_edge_gap, y+h*0.75f, {255, 255, 255});
-		window->draw_line(x+w-triangle_size/2-triangle_edge_gap, y+h*0.75f, x+w-triangle_edge_gap, y+h/2, {255, 255, 255});
+		window->draw_line(x+w-triangle_size-triangle_edge_gap, y+h/2, x+w-triangle_size/2-triangle_edge_gap, y+h*0.75f, {255, 255, 255, 255});
+		window->draw_line(x+w-triangle_size/2-triangle_edge_gap, y+h*0.75f, x+w-triangle_edge_gap, y+h/2, {255, 255, 255, 255});
 		// just draw the selected or the placeholder
 		// this is ugly
 		if (selected == nullptr) {
@@ -86,7 +86,6 @@ void Dropdown::on_press()
 
 int Dropdown::handle_global_press()
 {
-
 	if (open) {
 		if (EventHandler::get_mouse_x() >= x
 		        && EventHandler::get_mouse_x() <=x+w

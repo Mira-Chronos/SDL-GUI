@@ -26,8 +26,8 @@ private:
 	std::string contents;
 	std::string visible_text;
 	std::string placeholder;
-	int cursor_x = 2;
-	int cursor_position = 0;
+	unsigned int cursor_x = 2;
+	unsigned int cursor_position = 0;
 	bool typing = false;
 
 

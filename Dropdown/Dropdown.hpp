@@ -16,7 +16,7 @@ public:
 	void on_wheel_down() override;
 	void on_wheel_up() override;
 private:
-	int dropdown_height;
+	unsigned int dropdown_height;
 	int text_triangle_gap = 20;
 	int triangle_size = 10;
 	int triangle_edge_gap = 10;

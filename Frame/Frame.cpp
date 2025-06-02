@@ -8,8 +8,8 @@ Frame::Frame(std::shared_ptr<Parent> parent)
 void Frame::set_x(int newx)
 {
 	int difference = newx - x;
-	for (int i = 0; i < objects.size(); i++) {
-		for (int j = 0; j < objects[i].size(); j++) {
+	for (unsigned int i = 0; i < objects.size(); i++) {
+		for (unsigned int j = 0; j < objects[i].size(); j++) {
 			objects[i][j]->set_x(objects[i][j]->get_x() + difference);
 		}
 	}
@@ -20,8 +20,8 @@ void Frame::set_x(int newx)
 void Frame::set_y(int newy)
 {
 	int difference = newy - y;
-	for (int i = 0; i < objects.size(); i++) {
-		for (int j = 0; j < objects[i].size(); j++) {
+	for (unsigned int i = 0; i < objects.size(); i++) {
+		for (unsigned int j = 0; j < objects[i].size(); j++) {
 			objects[i][j]->set_y(objects[i][j]->get_y() + difference);
 		}
 	}

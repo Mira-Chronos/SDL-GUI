@@ -121,8 +121,8 @@ protected:
 	Text tooltip;
 	bool show_tooltip = false;
 	bool has_tooltip = false;
-	int x = 0;
-	int y = 0;
+	unsigned int x = 0;
+	unsigned int y = 0;
 	int w = 0;
 	int h = 0;
 	unsigned int row = -1;

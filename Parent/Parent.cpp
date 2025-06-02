@@ -7,8 +7,8 @@ std::shared_ptr<Widget> Parent::on_hover_grid(int x, int y)
 {
 	int temp_x = m_x;
 	int temp_y = m_y;
-	int row = 0;
-	int column = 0;
+	unsigned int row = 0;
+	unsigned int column = 0;
 	for (int height : row_heights) {
 		if (y >= temp_y && y <= temp_y + height) {
 			// found the row
@@ -51,8 +51,8 @@ std::shared_ptr<Widget> Parent::on_hover_place(int x, int y)
 
 void Parent::update_and_render(float dt)
 {
-	for (int i = 0; i < objects.size(); i++) {
-		for (int j = 0; j < objects[i].size(); j++) {
+	for (unsigned int i = 0; i < objects.size(); i++) {
+		for (unsigned int j = 0; j < objects[i].size(); j++) {
 			objects[i][j]->update_and_render(dt);
 		}
 	}

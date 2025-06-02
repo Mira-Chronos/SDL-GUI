@@ -11,10 +11,10 @@ public:
 		static EventHandler instance;
 		return instance;
 	}
-	static int get_mouse_x() {
+	static unsigned int get_mouse_x() {
 		return get().mouse_x;
 	}
-	static int get_mouse_y() {
+	static unsigned int get_mouse_y() {
 		return get().mouse_y;
 	}
 	static void remove_window(int id) {

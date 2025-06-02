@@ -36,7 +36,7 @@ void Textbox::calc_visible_text()
 	for (unsigned int l = scroll_down; l < contents.get_line_count() && visible_text.get_line_count() < line_count; l++) {
 		// go through each line visible after the scroll down, and add characters visible after scroll right
 		visible_text.lines.push_back("");
-		for (int i = scroll_right; i < contents.lines[l].length() && visible_text.lines.back().size() < character_count; i++) {
+		for (unsigned int i = scroll_right; i < contents.lines[l].length() && visible_text.lines.back().size() < character_count; i++) {
 			visible_text.lines.back().push_back(contents.lines[l][i]);
 		}
 	}
@@ -71,7 +71,7 @@ void Textbox::move_cursor_up()
 {
 	if (cursor_line > 0) {
 		cursor_line--;
-		if (cursor_line-scroll_down < 0) {
+		if (cursor_line < scroll_down) {
 			scroll_down--;
 		}
 		else {
@@ -134,7 +134,7 @@ void Textbox::move_cursor_left()
 {
 	cursor_position--;
 	cursor_x -= window->get_font_width();
-	if (cursor_position - scroll_right < 0) {
+	if (cursor_position < scroll_right) {
 		// cursor has gone before the line
 		if (scroll_right > 0) {
 			scroll_right--;
@@ -142,7 +142,7 @@ void Textbox::move_cursor_left()
 		}
 		else {
 			cursor_line--;
-			if (cursor_line < 0) {
+			if (cursor_line == 0) {
 				// no more text before
 				cursor_line = 0;
 				cursor_x = padding;
@@ -212,11 +212,11 @@ void Textbox::on_press()
 	Widget::on_press();
 	int mouse_x_rel = EventHandler::get_mouse_x() - x; // relative mouse x
 	int mouse_y_rel = EventHandler::get_mouse_y() - y; // relative mouse y
-	int line = mouse_y_rel / window->get_font_height();
+	unsigned int line = mouse_y_rel / window->get_font_height();
 	if (line >= visible_text.get_line_count()) {
 		line = visible_text.get_line_count()-1;
 	}
-	int character = mouse_x_rel / window->get_font_width(); // character without respect to scroll
+	unsigned int character = mouse_x_rel / window->get_font_width(); // character without respect to scroll
 	if (character > contents.lines[line].size())
 		character = contents.lines[line].size();
 

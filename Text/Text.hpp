@@ -12,7 +12,7 @@ public:
 	virtual void set(std::string new_text);
 	std::string get();
 	void render(int x, int y, SDL_Color foreground = Theme::TEXT_FOREGROUND, bool draw_background = false, SDL_Color background = Theme::TEXT_BACKGROUND);
-	int get_line_count();
+	unsigned int get_line_count();
 	int get_width();
 	bool empty();
 	void clear();

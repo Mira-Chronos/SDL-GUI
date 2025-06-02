@@ -37,14 +37,14 @@ private:
 	Text visible_text;
 	std::string placeholder;
 	int padding = 2;
-	int cursor_x = padding;
-	int cursor_y = padding;
-	int cursor_position = 0;
-	int cursor_line = 0;
+	unsigned int cursor_x = padding;
+	unsigned int cursor_y = padding;
+	unsigned int cursor_position = 0;
+	unsigned int cursor_line = 0;
 	bool typing = false;
 
-	int scroll_right = 0;
-	int scroll_down = 0;
+	unsigned int scroll_right = 0;
+	unsigned int scroll_down = 0;
 	void move_cursor_right();
 	void move_cursor_left();
 	void move_cursor_up();

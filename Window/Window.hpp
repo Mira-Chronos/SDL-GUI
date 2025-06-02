@@ -60,10 +60,10 @@ public:
 			break;
 		}
 	}
-	inline int get_font_height() {
+	inline unsigned int get_font_height() {
 		return font_height;
 	}
-	inline int get_font_width() {
+	inline unsigned int get_font_width() {
 		return font_width;
 	}
 	inline TTF_Font* get_font() {
