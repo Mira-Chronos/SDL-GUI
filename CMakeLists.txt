@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 #set(SDL2_LIB_DIR C:/SDL2/lib/x64)
 #include_directories(${SDL2_INCLUDE_DIR})
 #link_directories(${SDL2_LIB_DIR})
+SET(CMAKE_CXX_FLAGS "-g -Wextra -Wall -Wno-unused-parameter -Wmissing-declarations -Wredundant-decls -Wunreachable-code -fconcepts")
+
+message("C++ version " ${CMAKE_CXX_STANDARD})
+message("C++ flags: " ${CMAKE_CXX_FLAGS} )
 
 link_libraries(SDL2 SDL2_ttf SDL2_image)
 include_directories(include Textbox Theme Dropdown Slider Checkbox Button Window Widget Parent Text Frame Label Entry EventHandler)
