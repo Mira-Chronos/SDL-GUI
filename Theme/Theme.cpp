@@ -38,3 +38,6 @@ SDL_Color Theme::TEXT_FOREGROUND                = {255, 255, 255, 255 };
 
 SDL_Color Theme::TOOLTIP_BACKGROUND             = {0, 0, 0, 255 };
 SDL_Color Theme::TOOLTIP_FOREGROUND             = {255, 255, 255, 255 };
+
+SDL_Color Theme::PROGRESSBAR_BACKGROUND         = {0, 0, 0, 255 };
+SDL_Color Theme::PROGRESSBAR_FOREGROUND         = {0, 120, 220, 255 };

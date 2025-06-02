@@ -38,4 +38,7 @@ struct Theme {
 
 	static SDL_Color TOOLTIP_BACKGROUND;
 	static SDL_Color TOOLTIP_FOREGROUND;
+
+	static SDL_Color PROGRESSBAR_BACKGROUND;
+	static SDL_Color PROGRESSBAR_FOREGROUND;
 };

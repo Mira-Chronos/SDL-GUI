@@ -11,3 +11,4 @@
 #include "SliderFloat.hpp"
 #include "Dropdown.hpp"
 #include "Textbox.hpp"
+#include "Progressbar.hpp"

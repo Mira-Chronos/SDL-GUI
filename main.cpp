@@ -27,5 +27,14 @@ int main()
 		std::cout << e->get() << std::endl;
 	})->grid(2, 1);
 
+	auto pb = std::make_shared<Progressbar>(root, 5, 20);
+	pb->grid(3, 1);
+	pb->set(12);
+
+	std::make_shared<Button>(root, "Display", [pb]() {
+		std::cout << pb->get() << std::endl;
+	})->grid(3, 0);
+
+
 	root->run();
 }
