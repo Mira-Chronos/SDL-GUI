@@ -17,10 +17,11 @@ int main()
 	})->grid(0, 1);
 
 	auto t = std::make_shared<Textbox>(root, 10, 20);
+	t->grid(1, 1);
+
 	std::make_shared<Button>(root, "Display", [t]() {
 		std::cout << t->get() << std::endl;
 	})->grid(1, 0);
-	t->grid(1, 1);
 
 	std::make_shared<Button>(root, "Display", [e]() {
 		std::cout << e->get() << std::endl;
