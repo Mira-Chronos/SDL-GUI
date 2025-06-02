@@ -13,6 +13,8 @@ public:
     void update_and_render(float dt);
     void on_press();
     void on_deselect();
+    void on_wheel_down() override;
+    void on_wheel_up() override;
 private:
     int dropdown_height;
     int text_triangle_gap = 20;

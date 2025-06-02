@@ -99,3 +99,25 @@ int Dropdown::handle_global_press() {
 void Dropdown::on_deselect() {
     open = false;
 }
+
+void Dropdown::on_wheel_down() {
+    if (options.empty()) return;
+    int idx = 0;
+    if (selected != nullptr) {
+        idx = std::distance(options.data(), selected);
+    }
+    if (idx < static_cast<int>(options.size()) - 1) {
+        selected = &options[idx + 1];
+    }
+}
+
+void Dropdown::on_wheel_up() {
+    if (options.empty()) return;
+    int idx = 0;
+    if (selected != nullptr) {
+        idx = std::distance(options.data(), selected);
+    }
+    if (idx > 0) {
+        selected = &options[idx - 1];
+    }
+}
