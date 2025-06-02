@@ -2,7 +2,8 @@
 #include "SliderInt.hpp"
 
 SliderInt::SliderInt(std::shared_ptr<Parent> parent, int _min, int _max, int* _variable)
-	:Slider(parent), variable(_variable) {
+	:Slider(parent), variable(_variable)
+{
 	if (_min > _max) {
 		max = _min;
 		min = _max;
@@ -17,11 +18,13 @@ SliderInt::SliderInt(std::shared_ptr<Parent> parent, int _min, int _max, int* _v
 	gap = w / (max - min);
 }
 
-int SliderInt::get() {
+int SliderInt::get()
+{
 	return position_x / gap;
 }
 
-void SliderInt::update_and_render(float dt) {
+void SliderInt::update_and_render(float dt)
+{
 	if (dragging) {
 		int mouse_x = EventHandler::get_mouse_x()-x;
 		if (mouse_x > w)
@@ -60,7 +63,8 @@ void SliderInt::update_and_render(float dt) {
 	Slider::update_and_render(dt);
 }
 
-void SliderInt::set(int value) {
+void SliderInt::set(int value)
+{
 	if (value > max)
 		value = max;
 	else if (value < min)

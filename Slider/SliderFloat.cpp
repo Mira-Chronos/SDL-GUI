@@ -1,7 +1,8 @@
 #include "SliderFloat.hpp"
 #include "EventHandler.hpp"
 SliderFloat::SliderFloat(std::shared_ptr<Parent> parent, float _min, float _max, float* _variable)
-	:Slider(parent) {
+	:Slider(parent)
+{
 	if (_min > _max) {
 		max = _min;
 		min = _max;
@@ -13,7 +14,8 @@ SliderFloat::SliderFloat(std::shared_ptr<Parent> parent, float _min, float _max,
 	variable = _variable;
 }
 
-void SliderFloat::update_and_render(float dt) {
+void SliderFloat::update_and_render(float dt)
+{
 	if (dragging) {
 		position_x = EventHandler::get_mouse_x() - x;
 		if (position_x > w) {
@@ -34,11 +36,13 @@ void SliderFloat::update_and_render(float dt) {
 	Slider::update_and_render(dt);
 }
 
-float SliderFloat::get() {
+float SliderFloat::get()
+{
 	return min + get_percentage() * (max - min);
 }
 
-void SliderFloat::set(float value) {
+void SliderFloat::set(float value)
+{
 	if (value > max)
 		value = max;
 	else if (value < min)

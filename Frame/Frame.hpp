@@ -5,14 +5,14 @@
 
 class Frame : public Widget, public Parent {
 public:
-    Frame(std::shared_ptr<Parent> parent);
-    void grid(std::shared_ptr<Widget> widget, unsigned int row = -1, unsigned int column = -1); // parent grid, grid an item into the frame
-    void grid(unsigned int row = -1, unsigned int column = -1); // widget grid, grid the actual frame into its parent
-    void update_and_render(float dt);
-    Window* get_root();
-    void set_x(int newx);
-    void set_y(int newy);
+	Frame(std::shared_ptr<Parent> parent);
+	void grid(std::shared_ptr<Widget> widget, unsigned int row = -1, unsigned int column = -1); // parent grid, grid an item into the frame
+	void grid(unsigned int row = -1, unsigned int column = -1); // widget grid, grid the actual frame into its parent
+	void update_and_render(float dt);
+	Window* get_root();
+	void set_x(int newx);
+	void set_y(int newy);
 
 private:
-    int row, column;
+	int row, column;
 };

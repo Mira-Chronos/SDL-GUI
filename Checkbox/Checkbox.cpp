@@ -3,7 +3,8 @@
 #include "Checkbox.hpp"
 
 Checkbox::Checkbox(std::shared_ptr<Parent> parent, std::string _text, bool* _variable)
-:Widget(parent) {
+	:Widget(parent)
+{
 	text = Text(window, _text);
 	variable = _variable;
 	if (variable != nullptr) {
@@ -12,19 +13,22 @@ Checkbox::Checkbox(std::shared_ptr<Parent> parent, std::string _text, bool* _var
 	update_dimensions();
 }
 
-void Checkbox::update_dimensions() {
+void Checkbox::update_dimensions()
+{
 	TTF_SizeText(window->get_font(), text.get().c_str(), &w, &h);
 	w += padding_x + spacing;
 	h *= text.get_line_count();
 	h += padding_y;
 }
 
-void Checkbox::grid(unsigned int row, unsigned int column) {
+void Checkbox::grid(unsigned int row, unsigned int column)
+{
 	Widget::grid(row, column);
 	update_dimensions();
 }
 
-void Checkbox::update_and_render(float dt) {
+void Checkbox::update_and_render(float dt)
+{
 	Widget::update_and_render(dt);
 	window->draw_rect(x + padding_x + 1, y + h / 2 - 6 + 1, 10, 10, box_bg, true); // background
 	window->draw_rect(x + padding_x, y + h / 2 - 6, 12, 12, { 255,255,255 }); // border
@@ -36,12 +40,14 @@ void Checkbox::update_and_render(float dt) {
 	}
 }
 
-void Checkbox::on_press() {
+void Checkbox::on_press()
+{
 	Widget::on_press();
 	box_bg = Theme::CHECKBOX_PRESS_BACKGROUND;
 }
 
-void Checkbox::on_release() {
+void Checkbox::on_release()
+{
 	Widget::on_release();
 	box_bg = Theme::CHECKBOX_BACKGROUND;
 	checked = !checked;

@@ -10,7 +10,9 @@ public:
 	void grid(unsigned int row = -1, unsigned int column = -1);
 	void on_press();
 	void on_release();
-	bool get() { return checked; };
+	bool get() {
+		return checked;
+	};
 	void set(bool status) {
 		checked = status;
 		if (variable != nullptr)
