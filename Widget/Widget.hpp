@@ -25,13 +25,13 @@ enum class WidgetEvent {
 
 class Parent;
 class Window;
-class Widget {
+class Widget : public std::enable_shared_from_this<Widget> {
 public:
-    Widget(Parent* parent);
+    Widget(std::shared_ptr<Parent> parent_);
 
     void bind(WidgetEvent event, std::function<void()> callback);
 
-    virtual Widget* get_target_widget(int x, int y) {return this;}
+    virtual std::shared_ptr<Widget> get_target_widget(int x, int y) {return shared_from_this();}
     virtual void update_and_render(float dt);
     virtual void on_press() {call_callbacks(WidgetEvent::ON_PRESS);}
     virtual void on_release() {call_callbacks(WidgetEvent::ON_RELEASE);}
@@ -69,7 +69,7 @@ public:
 protected:
     WidgetType type = WidgetType::WIDGET;
     Window* window;
-    Parent* parent;
+    std::weak_ptr<Parent> parent;
     Text tooltip;
     bool show_tooltip = false;
     bool has_tooltip = false;

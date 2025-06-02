@@ -2,7 +2,7 @@
 #include "Widget.hpp"
 class Textbox : public Widget {
 public:
-    Textbox(Parent* parent, 
+    Textbox(std::shared_ptr<Parent> parent, 
         unsigned int line_count = 10, 
         unsigned int character_count = 20
     );

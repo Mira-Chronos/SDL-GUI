@@ -5,7 +5,7 @@
 #include "Theme.hpp"
 class Label : public Widget, public Text {
 public:
-    Label(Parent* parent, std::string text);
+    Label(std::shared_ptr<Parent> parent, std::string text);
     void update_and_render(float dt);
     SDL_Color foreground = Theme::TEXT_FOREGROUND;
     SDL_Color background = Theme::TEXT_BACKGROUND;

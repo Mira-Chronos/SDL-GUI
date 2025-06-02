@@ -4,7 +4,7 @@
 #include "EventHandler.hpp"
 #include "Theme.hpp"
 #include "text_handling.hpp"
-Entry::Entry(Parent *parent)
+Entry::Entry(std::shared_ptr<Parent> parent)
 : Widget(parent) {
     w = window->get_font_width() * 10; // minimum width of 10 characters (if there is no palceholder)
     h = window->get_font_height() * 1.5; // some padding

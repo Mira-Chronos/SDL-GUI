@@ -3,7 +3,7 @@
 #include "Slider.hpp"
 
 
-Slider::Slider(Parent* parent)
+Slider::Slider(std::shared_ptr<Parent> parent)
 :Widget(parent) {
 	w = 100;
 	h = 20;

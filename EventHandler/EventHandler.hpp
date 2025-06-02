@@ -32,6 +32,6 @@ private:
 	int mouse_focused_window_id = 1;
 	int mouse_x, mouse_y;
 	bool running;
-	Widget* current_hover = nullptr;
-	Widget* selected_widget = nullptr;
+	std::shared_ptr<Widget> current_hover = nullptr;
+	std::shared_ptr<Widget> selected_widget = nullptr;
 };

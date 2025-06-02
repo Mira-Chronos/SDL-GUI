@@ -3,7 +3,7 @@
 
 class SliderFloat : public Slider {
 public:
-	SliderFloat(Parent* parent, float min, float max, float* variable = nullptr);
+	SliderFloat(std::shared_ptr<Parent> parent, float min, float max, float* variable = nullptr);
 	void update_and_render(float dt);
 	float get();
 	void set(float value);

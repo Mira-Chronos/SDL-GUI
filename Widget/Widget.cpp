@@ -2,10 +2,12 @@
 #include "Window.hpp"
 #include "EventHandler.hpp"
 
-Widget::Widget(Parent *parent)
-:parent(parent) {
-    window = parent->get_root();
-    tooltip.window = window;
+Widget::Widget(std::shared_ptr<Parent> parent_)
+:parent(parent_) {
+    if (auto p = parent.lock()) {
+        window = p->get_root();
+        tooltip.window = window;
+    }
 }
 
 void Widget::bind(WidgetEvent event, std::function<void()> callback) {
@@ -13,11 +15,15 @@ void Widget::bind(WidgetEvent event, std::function<void()> callback) {
 }
 
 void Widget::grid(unsigned int row, unsigned int column) {
-    parent->grid(this, row, column);
+    if (auto p = parent.lock()) {
+        p->grid(shared_from_this(), row, column);
+    }
 }
 
 void Widget::place(unsigned int x, unsigned int y, bool center) {
-    parent->place(this, x, y, center);
+    if (auto p = parent.lock()) {
+        p->place(shared_from_this(), x, y, center);
+    }
 }
 
 void Widget::update_and_render(float dt) {

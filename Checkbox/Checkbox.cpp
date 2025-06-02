@@ -2,7 +2,7 @@
 #include "Window.hpp"
 #include "Checkbox.hpp"
 
-Checkbox::Checkbox(Parent* parent, std::string _text, bool* _variable)
+Checkbox::Checkbox(std::shared_ptr<Parent> parent, std::string _text, bool* _variable)
 :Widget(parent) {
 	text = Text(window, _text);
 	variable = _variable;

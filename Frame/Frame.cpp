@@ -1,5 +1,5 @@
 #include "Frame.hpp"
-Frame::Frame(Parent *parent)
+Frame::Frame(std::shared_ptr<Parent> parent)
 : Widget(parent)  {
     type = WidgetType::FRAME;
 }
@@ -26,7 +26,7 @@ void Frame::set_y(int newy) {
     m_y = y;
 }
 
-void Frame::grid(Widget *widget, unsigned int _row, unsigned int _column) {
+void Frame::grid(std::shared_ptr<Widget> widget, unsigned int _row, unsigned int _column) {
     Parent::grid(widget, _row, _column);
 
     w = 0;
@@ -52,4 +52,12 @@ void Frame::grid(unsigned int _row, unsigned int _column) {
 void Frame::update_and_render(float dt) {
     Parent::update_and_render(dt);
     Widget::update_and_render(dt);
+}
+
+Window* Frame::get_root()
+{
+    if (auto p = parent.lock()) {
+        return p->get_root();
+    }
+    return nullptr;
 }

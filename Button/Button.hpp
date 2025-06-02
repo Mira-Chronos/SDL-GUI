@@ -8,7 +8,7 @@
 
 class Button : public Widget {
 public:
-    Button(Parent *parent, std::string text, std::function<void()> callback = [](){});
+    Button(std::shared_ptr<Parent> parent, std::string text, std::function<void()> callback = [](){});
     void set(std::string text);
     void update_and_render(float dt);
     void on_hover();

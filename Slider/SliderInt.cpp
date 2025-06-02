@@ -1,7 +1,7 @@
 #include "EventHandler.hpp"
 #include "SliderInt.hpp"
 
-SliderInt::SliderInt(Parent* parent, int _min, int _max, int* _variable)
+SliderInt::SliderInt(std::shared_ptr<Parent> parent, int _min, int _max, int* _variable)
 	:Slider(parent), variable(_variable) {
 	if (_min > _max) {
 		max = _min;

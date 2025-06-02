@@ -2,7 +2,7 @@
 #include "Widget.hpp"
 class Entry : public Widget {
 public:
-    Entry(Parent* parent);
+    Entry(std::shared_ptr<Parent> parent);
     void set_placeholder(std::string text);
     void set(std::string text);
     inline std::string get() {return contents;}

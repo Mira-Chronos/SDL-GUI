@@ -98,11 +98,7 @@ void Window::run() {
 }
 
 void Window::clean() {
-    for (int i = 0; i < objects.size(); i++) {
-        for (int j = 0; j < objects[i].size(); j++) {
-            delete objects[i][j];
-        }
-    }
+    objects.clear();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 }

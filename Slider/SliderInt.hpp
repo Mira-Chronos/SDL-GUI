@@ -3,7 +3,7 @@
 
 class SliderInt : public Slider {
 public:
-	SliderInt(Parent* parent, int min, int max, int* variable = nullptr);
+	SliderInt(std::shared_ptr<Parent> parent, int min, int max, int* variable = nullptr);
 	void update_and_render(float dt);
 	int get();
 	void set(int value);

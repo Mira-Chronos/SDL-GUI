@@ -3,7 +3,7 @@
 class Dropdown : public Widget {
 
 public:
-    Dropdown(Parent *parent, std::string placeholder, std::vector<std::string> options);
+    Dropdown(std::shared_ptr<Parent> parent, std::string placeholder, std::vector<std::string> options);
     SDL_Color foreground = Theme::DROPDOWN_FOREGROUND;
     SDL_Color background = Theme::DROPDOWN_BACKGROUND;
     SDL_Color border = Theme::DROPDOWN_BORDER;

@@ -2,7 +2,7 @@
 #include "Window.hpp"
 #include "Textbox.hpp"
 
-Textbox::Textbox(Parent* parent, unsigned int line_count, unsigned int character_count)
+Textbox::Textbox(std::shared_ptr<Parent> parent, unsigned int line_count, unsigned int character_count)
 :Widget(parent), line_count(line_count), character_count(character_count) {
     w = window->get_font_width() * character_count;
     h = window->get_font_height() * line_count;

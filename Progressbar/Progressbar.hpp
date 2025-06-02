@@ -5,8 +5,8 @@
 class Progressbar : public Widget
 {
 public:
-    Progressbar(Parent* parent, int max);
-    Progressbar(Parent* parent, int min, int max);
+    Progressbar(std::shared_ptr<Parent> parent, int max);
+    Progressbar(std::shared_ptr<Parent> parent, int min, int max);
     void update_and_render(float dt);
 private:
 };

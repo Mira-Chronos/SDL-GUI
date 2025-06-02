@@ -1,7 +1,7 @@
 #include "Window.hpp"
 #include "Button.hpp"
 #include <iostream>
-Button::Button(Parent *parent, std::string _text, std::function<void()> callback)
+Button::Button(std::shared_ptr<Parent> parent, std::string _text, std::function<void()> callback)
 // hard code font height and width :)
 : Widget(parent), callback(callback) {
     text = Text(window, _text);

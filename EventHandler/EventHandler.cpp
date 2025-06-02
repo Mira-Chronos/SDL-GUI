@@ -87,7 +87,7 @@ void EventHandler::Poll(float dt) {
                 }
                 if (should_pass)
                     break;
-                Widget* widget = windows[focused_window_id]->get_target_widget(mouse_x, mouse_y);
+                std::shared_ptr<Widget> widget = windows[focused_window_id]->get_target_widget(mouse_x, mouse_y);
                 if (widget != nullptr) {
                     widget->on_press();
                 }
@@ -108,7 +108,7 @@ void EventHandler::Poll(float dt) {
             case SDL_MOUSEMOTION: {
                 if (mouse_focused_window_id == focused_window_id) {
                     SDL_GetMouseState(&mouse_x, &mouse_y);
-                    Widget* prev_hover = current_hover;
+                    std::shared_ptr<Widget> prev_hover = current_hover;
                     current_hover = windows[focused_window_id]->get_target_widget(mouse_x, mouse_y);
                     if (current_hover != prev_hover) {
                         if (prev_hover != nullptr)

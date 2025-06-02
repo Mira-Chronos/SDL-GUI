@@ -1,6 +1,6 @@
 #include "SliderFloat.hpp"
 #include "EventHandler.hpp"
-SliderFloat::SliderFloat(Parent* parent, float _min, float _max, float* _variable)
+SliderFloat::SliderFloat(std::shared_ptr<Parent> parent, float _min, float _max, float* _variable)
 	:Slider(parent) {
 	if (_min > _max) {
 		max = _min;

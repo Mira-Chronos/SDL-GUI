@@ -2,7 +2,7 @@
 #include "EventHandler.hpp"
 #include "Dropdown.hpp"
 
-Dropdown::Dropdown(Parent *parent, std::string _placeholder, std::vector<std::string> _options)
+Dropdown::Dropdown(std::shared_ptr<Parent> parent, std::string _placeholder, std::vector<std::string> _options)
 :Widget(parent), placeholder(_placeholder), options(_options) {
     w = placeholder.length();
     if (w == 0)

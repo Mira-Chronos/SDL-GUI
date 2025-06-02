@@ -5,7 +5,7 @@
 
 class Slider : public Widget {
 public:
-	Slider(Parent* parent);
+	Slider(std::shared_ptr<Parent> parent);
 	void on_press();
 	void on_release();
 	void on_deselect();

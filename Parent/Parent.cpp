@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <iostream>
 
-Widget* Parent::on_hover_grid(int x, int y) {
+std::shared_ptr<Widget> Parent::on_hover_grid(int x, int y) {
     int temp_x = m_x;
     int temp_y = m_y;
     int row = 0;
@@ -35,7 +35,7 @@ Widget* Parent::on_hover_grid(int x, int y) {
     return nullptr;
 }
 
-Widget* Parent::on_hover_place(int x, int y) {
+std::shared_ptr<Widget> Parent::on_hover_place(int x, int y) {
     for (int i = objects.back().size()-1; i >= 0; i--) {
         if (x <= objects.back()[i]->get_x() + objects.back()[i]->get_w() &&
             x >= objects.back()[i]->get_x() &&
@@ -56,7 +56,7 @@ void Parent::update_and_render(float dt) {
 
 }
 
-void Parent::place(Widget *widget, unsigned int x, unsigned int y, bool center) {
+void Parent::place(std::shared_ptr<Widget> widget, unsigned int x, unsigned int y, bool center) {
     placement = Placement::PLACE;
     get_fp = &Parent::on_hover_place;
     if(objects.empty()){
@@ -72,7 +72,7 @@ void Parent::place(Widget *widget, unsigned int x, unsigned int y, bool center) 
     objects.back().push_back(widget);
 }
 
-void Parent::grid(Widget *widget, unsigned int row, unsigned int column) {
+void Parent::grid(std::shared_ptr<Widget> widget, unsigned int row, unsigned int column) {
     placement = Placement::GRID;
     get_fp = &Parent::on_hover_grid;
     // Assure la taille de la grille
@@ -94,7 +94,7 @@ void Parent::compute_grid_sizes() {
 
     for (size_t i = 0; i < objects.size(); ++i) {
         for (size_t j = 0; j < objects[i].size(); ++j) {
-            Widget* w = objects[i][j];
+            std::shared_ptr<Widget> w = objects[i][j];
             if (w) {
                 if (w->get_h() > row_heights[i]) row_heights[i] = w->get_h();
                 if (w->get_w() > column_widths[j]) column_widths[j] = w->get_w();
@@ -108,7 +108,7 @@ void Parent::apply_grid_layout() {
     for (size_t i = 0; i < objects.size(); ++i) {
         int x = m_x;
         for (size_t j = 0; j < objects[i].size(); ++j) {
-            Widget* w = objects[i][j];
+            std::shared_ptr<Widget> w = objects[i][j];
             if (w) {
                 w->set_x(x);
                 w->set_y(y);

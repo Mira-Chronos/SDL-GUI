@@ -1,7 +1,7 @@
 #include "Window.hpp"
 #include "Label.hpp"
 
-Label::Label(Parent *parent, std::string text)
+Label::Label(std::shared_ptr<Parent> parent, std::string text)
 : Widget(parent), Text(Widget::window, text){
     set(text);
 }
