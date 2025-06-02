@@ -75,51 +75,46 @@ void Parent::place(Widget *widget, unsigned int x, unsigned int y, bool center) 
 void Parent::grid(Widget *widget, unsigned int row, unsigned int column) {
     placement = Placement::GRID;
     get_fp = &Parent::on_hover_grid;
-    if (row >= objects.size()) {
-        // new row
-        row = objects.size();
-        objects.push_back(std::vector<Widget*> {});
-        row_heights.push_back(widget->get_h());
-        
+    // Assure la taille de la grille
+    while (objects.size() <= row) {
+        objects.push_back({});
     }
-    if (column >= objects[row].size()) {
-        // new column
-        column = objects[row].size();
-        objects[row].push_back(widget);
-        if (column >= column_widths.size()) {
-            column_widths.push_back(widget->get_w());
-        }
+    while (objects[row].size() <= column) {
+        objects[row].push_back(nullptr);
     }
-    if (widget->get_h() > row_heights[row]) {
-        for (int i = row + 1; i < objects.size(); i++) {
-            for (int j = 0; j < objects[i].size(); j++) {
-                objects[i][j]->set_y(objects[i][j]->get_y()+ widget->get_h() - row_heights[row]);
-            }
-        }
-        row_heights[row] = widget->get_h();
-    }
-    
-    if (widget->get_w() > column_widths[column]) {
-        for (int i = 0; i < objects.size(); i++) {
-            for (int j = column + 1; j < objects[i].size(); j++) {
-                objects[i][j]->set_x(objects[i][j]->get_x() + widget->get_w() - column_widths[column]);
-            }
-        }
-        column_widths[column] = widget->get_w();
-    }
-   
-    widget->set_y(0);
-    for (int i = 0; i < row; i++) {
-        widget->set_y(widget->get_y() + row_heights[i]);
-    }
-    
-    widget->set_x(0);
-    for (int i = 0; i < column; i++) {
-        widget->set_x(widget->get_x() + column_widths[i]);
-    }
-   
     objects[row][column] = widget;
     widget->set_row(row);
     widget->set_column(column);
+}
 
+void Parent::compute_grid_sizes() {
+    // Redimensionne les vecteurs
+    row_heights.assign(objects.size(), 0);
+    column_widths.assign(objects.empty() ? 0 : objects[0].size(), 0);
+
+    for (size_t i = 0; i < objects.size(); ++i) {
+        for (size_t j = 0; j < objects[i].size(); ++j) {
+            Widget* w = objects[i][j];
+            if (w) {
+                if (w->get_h() > row_heights[i]) row_heights[i] = w->get_h();
+                if (w->get_w() > column_widths[j]) column_widths[j] = w->get_w();
+            }
+        }
+    }
+}
+
+void Parent::apply_grid_layout() {
+    int y = m_y;
+    for (size_t i = 0; i < objects.size(); ++i) {
+        int x = m_x;
+        for (size_t j = 0; j < objects[i].size(); ++j) {
+            Widget* w = objects[i][j];
+            if (w) {
+                w->set_x(x);
+                w->set_y(y);
+            }
+            x += column_widths[j];
+        }
+        y += row_heights[i];
+    }
 }

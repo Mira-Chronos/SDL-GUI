@@ -14,6 +14,9 @@ public:
     virtual void off_hover(int x, int y) {}
     virtual Window* get_root() {return nullptr;}
     //    void remove_widget(Widget *widget); // use linear search using the x y and grid
+
+    void compute_grid_sizes();
+    void apply_grid_layout();
 protected:
     std::vector<int> row_heights = {};
     std::vector<int> column_widths = {};

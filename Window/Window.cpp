@@ -62,6 +62,9 @@ Window::Window() {
 }
 
 void Window::run() {
+    this->compute_grid_sizes();
+    this->apply_grid_layout();
+
     if (!custom_dimension) {
         width = 0;
         height = 0;
